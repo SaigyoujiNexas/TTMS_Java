@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0"
+         metadata-complete="true">
+  <display-name>TTMS_stu</display-name>
+  <request-character-encoding>UTF-8</request-character-encoding>
+  <response-character-encoding>UTF-8</response-character-encoding>
+  <welcome-file-list>
+    <welcome-file>admin/studio/index.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>studio</servlet-name>
+    <servlet-class>xupt.se.ttms.controller.StudioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+<servlet-name>studio</servlet-name>
+<url-pattern>/studio</url-pattern>
+</servlet-mapping>
+</web-app>
