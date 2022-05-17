@@ -48,18 +48,17 @@
 
 <script type="text/javascript">
     function search(){
-    var url = "http://127.0.0.1:8080/studio";
+    var url = "../../StudioServlet";
       if (window.XMLHttpRequest)
           req = new XMLHttpRequest();
       else if (window.ActiveXObject)
           req = new ActiveXObject("Microsoft.XMLHTTP");
     if (req) {
-		req.onreadystatechange = searchComplete;
       //采用POST方式，异步传输
-      req.open("POST", url, true);
+      req.open("post", url, true);
       //POST方式，必须加入如下头信息设定
       req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
+      req.onreadystatechange = searchComplete;
       req.send("type=search&name="+document.getElementById("studioname").value);
     }
   }
@@ -72,7 +71,6 @@
         theTable.deleteRow(num-1);
         num=theTable.rows.length;
       }
-	  //console.log(responseText)
       var json =  JSON.parse(req.responseText);//转换为json对象
       for(i=0; i<json.length; i++) {
         var rowCount = theTable.rows.length; //获得当前表格的行数
@@ -94,14 +92,14 @@
   function del(id){
     if(confirm("确定删除？")) {
 
-    var url = "http://127.0.0.1:8080/studio";
+    var url = "../../StudioServlet";
       if (window.XMLHttpRequest)
           req = new XMLHttpRequest();
       else if (window.ActiveXObject)
           req = new ActiveXObject("Microsoft.XMLHTTP");
     if (req) {
       //采用POST方式，异步传输
-      req.open("post", url, true);
+      req.open("POST", url, true);
       //POST方式，必须加入如下头信息设定
       req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       req.onreadystatechange = delComplete;
