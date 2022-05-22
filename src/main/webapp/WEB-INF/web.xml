@@ -8,15 +8,13 @@
   <display-name>TTMS_stu</display-name>
   <request-character-encoding>UTF-8</request-character-encoding>
   <response-character-encoding>UTF-8</response-character-encoding>
-  <welcome-file-list>
-    <welcome-file>admin/studio/index.html</welcome-file>
-  </welcome-file-list>
+
   <servlet>
-    <servlet-name>studio</servlet-name>
+    <servlet-name>studioServlet</servlet-name>
     <servlet-class>xupt.se.ttms.controller.StudioServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-<servlet-name>studio</servlet-name>
-<url-pattern>/studio</url-pattern>
+<servlet-name>studioServlet</servlet-name>
+<url-pattern>/studioServlet</url-pattern>
 </servlet-mapping>
 </web-app>
