@@ -1,15 +1,14 @@
-package xupt.se.ttms.idao;
+package xupt.se.ttms.idao
 
-import xupt.se.ttms.dao.StudioDAO;
+import xupt.se.ttms.dao.EmployeeDAO
+import xupt.se.ttms.dao.StudioDAO
 
-public class DAOFactory
-{
-    private static StudioDAO stuDao;
+object DAOFactory {
+    private val stuDao: StudioDAO by lazy {
+        StudioDAO()
+    }
 
-    public static synchronized StudioDAO creatStudioDAO()
-    {
-        if(null == stuDao)
-            stuDao=new StudioDAO();
-        return stuDao;
+    private val employeeDAO: EmployeeDAO by lazy {
+        EmployeeDAO()
     }
 }

@@ -1,19 +1,13 @@
 /**
- * 
+ *
  */
-package xupt.se.ttms.idao;
+package xupt.se.ttms.idao
 
-import java.util.List;
+import xupt.se.ttms.model.Studio
 
-import xupt.se.ttms.model.Studio;
-
-public interface iStudioDAO
-{
-    public int insert(Studio stu);
-
-    public int update(Studio stu);
-
-    public int delete(int ID);
-
-    public List<Studio> select(String studioName);
+interface iStudioDAO {
+    fun insert(stu: Studio): Int
+    fun update(stu: Studio): Int
+    fun delete(ID: Int): Int
+    fun select(studioName: String): List<Studio>
 }
