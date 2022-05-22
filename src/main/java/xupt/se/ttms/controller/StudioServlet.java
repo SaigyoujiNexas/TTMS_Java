@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import xupt.se.ttms.model.Studio;
 import xupt.se.ttms.service.StudioSrv;
 
-@WebServlet("/StudioServlet")
+@WebServlet(name = "StudioServlet", urlPatterns ={ "/StudioServlet"})
 public class StudioServlet extends HttpServlet
 {
     private static final long serialVersionUID=1L;
@@ -32,7 +32,7 @@ public class StudioServlet extends HttpServlet
     {
         System.out.println("get Post  Request");
         String type=request.getParameter("type");
-
+        response.setHeader("Access-Control-Allow-Origin", "*");
         // 根据请求操作类型，执行相应的增、删、该、查
         if(type.equalsIgnoreCase("add"))
             add(request, response);
@@ -124,7 +124,7 @@ public class StudioServlet extends HttpServlet
     private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         response.setCharacterEncoding("UTF-8");
-        response.setHeader("Access-Control-Allow-Origin", "*");
+
         PrintWriter out=response.getWriter();
         String name=request.getParameter("name");
         List<Studio> result=null;
