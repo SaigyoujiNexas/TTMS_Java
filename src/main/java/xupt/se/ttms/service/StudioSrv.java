@@ -8,7 +8,7 @@ import xupt.se.ttms.idao.iStudioDAO;
 import xupt.se.ttms.model.Studio;
 
 public class StudioSrv {
-	private StudioDAO stuDAO=DAOFactory.creatStudioDAO();
+	private StudioDAO stuDAO=DAOFactory.INSTANCE.getStuDao();
 	
 	public int add(Studio stu){
 		return stuDAO.insert(stu); 		
