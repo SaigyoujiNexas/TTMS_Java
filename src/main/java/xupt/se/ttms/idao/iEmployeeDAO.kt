@@ -1,4 +1,4 @@
-package xupt.se.ttms.idao
+package xupt.se.ttms.idao;
 
 import xupt.se.ttms.model.Employee
 

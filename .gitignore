@@ -1,2 +1,7 @@
 /target/
-jdbc.properties
+src/main/resources/jdbc.properties
+.idea
+.settings
+META-INF
+build
+target

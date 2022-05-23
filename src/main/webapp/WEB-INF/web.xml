@@ -10,11 +10,11 @@
   <response-character-encoding>UTF-8</response-character-encoding>
 
   <servlet>
-    <servlet-name>studioServlet</servlet-name>
+    <servlet-name>StudioServlet</servlet-name>
     <servlet-class>xupt.se.ttms.controller.StudioServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-<servlet-name>studioServlet</servlet-name>
-<url-pattern>/studioServlet</url-pattern>
+<servlet-name>StudioServlet</servlet-name>
+<url-pattern>/StudioServlet</url-pattern>
 </servlet-mapping>
 </web-app>

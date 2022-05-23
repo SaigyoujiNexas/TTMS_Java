@@ -1,6 +1,3 @@
-/**
- *
- */
 package xupt.se.ttms.idao
 
 import xupt.se.ttms.model.Studio
