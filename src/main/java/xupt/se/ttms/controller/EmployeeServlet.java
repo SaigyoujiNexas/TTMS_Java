@@ -18,20 +18,11 @@ public class EmployeeServlet extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var type = req.getParameter("type");
         resp.setHeader("Access-Control-Allow-Origin", "*");
-        switch (type.trim()){
-            case("add")-> {
-                add(req, resp);
-            }
-            case("delete")-> {
-                delete(req, resp);
-            }
-            case("update") -> {
-                update(req, resp);
-            }
-            case("search") -> {
-                search(req, resp);
-            }
-        }
+        if(type.trim().equals("add"))
+            add(req, resp);
+        else if(type.trim().equals("delete")) delete(req, resp);
+        else if(type.trim().equals("update")) update(req, resp);
+        else if(type.trim().equals("search")) search(req, resp);
     }
 
     private void search(HttpServletRequest req, HttpServletResponse resp) {
