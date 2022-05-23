@@ -4,8 +4,7 @@ import java.util.List;
 
 import xupt.se.ttms.dao.StudioDAO;
 import xupt.se.ttms.idao.DAOFactory;
-import xupt.se.ttms.idao.iStudioDAO;
-import xupt.se.ttms.model.Studio;
+import xupt.se.ttms.entity.Studio;
 
 public class StudioSrv {
 	private StudioDAO stuDAO=DAOFactory.INSTANCE.getStuDao();

@@ -1,4 +1,4 @@
-package xupt.se.ttms.model;
+package xupt.se.ttms.entity;
 
 
 public class Studio {

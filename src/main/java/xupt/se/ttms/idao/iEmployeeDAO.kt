@@ -1,6 +1,6 @@
 package xupt.se.ttms.idao;
 
-import xupt.se.ttms.model.Employee
+import xupt.se.ttms.entity.Employee
 
 interface iEmployeeDAO {
     fun insert(emp: Employee): Int

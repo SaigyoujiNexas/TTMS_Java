@@ -1,4 +1,4 @@
-package xupt.se.ttms.model
+package xupt.se.ttms.entity
 
 sealed class Gender {
     object F : Gender() {

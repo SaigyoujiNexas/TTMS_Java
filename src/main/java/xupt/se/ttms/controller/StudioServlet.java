@@ -14,7 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import xupt.se.ttms.model.Studio;
+import xupt.se.ttms.entity.Studio;
 import xupt.se.ttms.service.StudioSrv;
 
 @WebServlet(name = "StudioServlet", urlPatterns ={ "/StudioServlet"})

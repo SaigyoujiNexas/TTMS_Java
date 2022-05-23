@@ -1,8 +1,8 @@
 package xupt.se.ttms.dao
 
 import xupt.se.ttms.idao.iEmployeeDAO
-import xupt.se.ttms.model.Employee
-import xupt.se.ttms.model.Gender
+import xupt.se.ttms.entity.Employee
+import xupt.se.ttms.entity.Gender
 import xupt.se.util.DBUtil
 
 class EmployeeDAO : iEmployeeDAO {

@@ -1,4 +1,4 @@
-package xupt.se.ttms.model
+package xupt.se.ttms.entity
 
 data class Employee(
     var id: Int = -1, var dictionaryId: Int? = null,

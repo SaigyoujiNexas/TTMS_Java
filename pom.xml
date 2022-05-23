@@ -79,7 +79,6 @@
                   </execution>
               </executions>
           </plugin>
-
       </plugins>
     <resources>
       <resource>
@@ -92,8 +91,23 @@
 <dependency>
     <groupId>org.json</groupId>
     <artifactId>json</artifactId>
-    <version>20180130</version>
+    <version>20220320</version>
 </dependency>
+        <dependency>
+            <groupId>com.squareup.moshi</groupId>
+            <artifactId>moshi</artifactId>
+            <version>1.13.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>3.0.0</version>
+        </dependency>
 <dependency>
     <groupId>javax.servlet</groupId>
     <artifactId>javax.servlet-api</artifactId>

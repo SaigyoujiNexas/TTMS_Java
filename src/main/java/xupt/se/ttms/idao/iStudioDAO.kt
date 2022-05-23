@@ -1,6 +1,6 @@
 package xupt.se.ttms.idao
 
-import xupt.se.ttms.model.Studio
+import xupt.se.ttms.entity.Studio
 
 interface iStudioDAO {
     fun insert(stu: Studio): Int

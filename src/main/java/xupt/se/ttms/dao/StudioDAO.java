@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import xupt.se.ttms.idao.iStudioDAO;
-import xupt.se.ttms.model.Studio;
+import xupt.se.ttms.entity.Studio;
 import xupt.se.util.DBUtil;
 
 public class StudioDAO implements iStudioDAO
