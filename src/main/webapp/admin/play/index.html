@@ -49,7 +49,7 @@
 
     <script type="text/javascript">
         function search() {
-            var url = "http://121.36.246.101:8080/TTMS/PlayServlet";
+            var url = "../../PlayServlet";
             if (window.XMLHttpRequest)
                 req = new XMLHttpRequest()
             else if (window.ActiveXObject)
@@ -84,7 +84,7 @@
                     row.insertCell(4).innerHTML = dataList[i].length + '分钟';
                     row.insertCell(5).innerHTML = dataList[i].ticketPrice + '元';
                     row.insertCell(6).innerHTML = dataList[i].introduction;
-                    var tmp = dataList[i].id + ",\'" + dataList[i].name + "\'," + dataList[i].dictId + "," + dataList[i].dictLangID + ",\'" + dataList[i].length +"\'" + dataList[i].tickPrice +"\'" + dataList[i].introduction;
+                    var tmp = dataList[i].id + ",\'" + dataList[i].name + "\'," + dataList[i].type.name + "," + dataList[i].lang.name + ",\'" + dataList[i].length +"\'" + dataList[i].ticketPrice +"\'" + dataList[i].introduction;
                     row.insertCell(7).innerHTML = '<input type="button" class="btn btn-xs btn-primary" value="修改" onclick="modify('+ tmp +')" />&nbsp;&nbsp;<input type="button" class="btn btn-xs btn-danger" value="删除" onclick="del('+dataList[i].playId+')" />';
                 }
             }

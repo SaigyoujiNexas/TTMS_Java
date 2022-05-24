@@ -2,24 +2,21 @@
 
 package xupt.se.ttms.controller
 
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
-import com.squareup.moshi.adapter
 import org.json.JSONException
 import xupt.se.ttms.entity.Play
 import xupt.se.ttms.entity.PlayLang
 import xupt.se.ttms.entity.PlayType
 import xupt.se.ttms.service.PlaySrv
 import xupt.se.util.JsonUtil
-import xupt.se.util.MOSHI
 import java.io.IOException
-import java.math.BigDecimal
 import javax.servlet.ServletException
+import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 @ExperimentalStdlibApi
+@WebServlet(name = "StudioServlet", urlPatterns = ["/StudioServlet"])
 class PlayServlet: HttpServlet(){
 
     @Throws(ServletException::class, IOException::class)
