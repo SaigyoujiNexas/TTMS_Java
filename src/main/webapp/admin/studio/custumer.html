@@ -48,13 +48,12 @@
     </style>
 
     <script type="text/javascript">
-        function search(){
-            searchComplete()
-        }
-
-        function searchComplete() {
-            const res =axios({
+        function search() {
+            axios({
                 url:"http://120.55.69.175:8080/ttms/play/search/",
+                params: {
+                    name:document.getElementById('playname').value,
+                },
                 method:"get"
             }).then(res => {
                 var theTable = document.getElementById("table");//table的id
@@ -64,53 +63,30 @@
                   num=theTable.rows.length;
                 }
                 const dataList = res.data.data
-                console.log(dataList[1].dictType.dictValue);
+                console.log(document.getElementById('playname').value);
                 for(let i=0; i<dataList.length; i++) {
                     var rowCount = theTable.rows.length; //获得当前表格的行数
                     var row = theTable.insertRow(rowCount);//在tale里动态的增加tr
                     row.insertCell(0).innerHTML = dataList[i].playId;
                     row.insertCell(1).innerHTML = dataList[i].playName;
                     row.insertCell(2).innerHTML = (dataList[i].dictType == null ? '12':  dataList[i].dictType.dictValue);
-                    row.insertCell(3).innerHTML = dataList[i].dictLang.dictValue;
+                    row.insertCell(3).innerHTML = (dataList[i].dictLang == null ? '11':  dataList[i].dictLang.dictValue);
                     row.insertCell(4).innerHTML = dataList[i].playLength + '分钟';
                     row.insertCell(5).innerHTML = dataList[i].playTicketPrice + '元';
                     row.insertCell(6).innerHTML = dataList[i].playIntroduction;
-                    var tmp = dataList[i].playId + ",\'" + dataList[i].playName + "\'," + dataList[i].dictType.dictName + "," + dataList[i].dictLang.dictValue + ",\'" + dataList[i].playLength +"\'" + dataList[i].playTickPrice +"\'" + dataList[i].playIntroduction;
-                    row.insertCell(7).innerHTML = '<input type="button" class="btn btn-xs btn-primary" value="修改" onclick="modify('+ tmp +')" />&nbsp;&nbsp;<input type="button" class="btn btn-xs btn-danger" value="删除" onclick="del('+dataList[i].playId+')" />';
+                    row.insertCell(7).innerHTML = '<input type="button" class="btn btn-xs btn-primary" value="修改" onclick="modify('+dataList[i].playId +')" />&nbsp;&nbsp;<input type="button" class="btn btn-xs btn-danger" value="删除" onclick="del('+dataList[i].playId +')" />';
                 }
             }).catch(function(error) {
                 console.log(error);
             })
         }
-        function modify(a,b,c,d,e){
-            window.location="detail.html?type=update&id="+a+"&name="+encodeURIComponent(b)+"&rowCount="+c+"&colCount="+d+"&introduction="+encodeURIComponent(e);
+        function modify(idnum){
+            window.location='./detail-repertoire.html' + '?id=' + idnum 
         }
 
-        function del(id){
-            if(confirm("确定删除？")) {
-
-                var url = "../../studioServlet";
-                if (window.XMLHttpRequest)
-                    req = new XMLHttpRequest();
-                else if (window.ActiveXObject)
-                    req = new ActiveXObject("Microsoft.XMLHTTP");
-                if (req) {
-                    //采用POST方式，异步传输
-                    req.open("post", url, true);
-                    //POST方式，必须加入如下头信息设定
-                    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                    req.onreadystatechange = delComplete;
-                    req.send("type=delete&id="+id);
-                }
-            }
-        }
-        function delComplete() {
-            if (req.readyState == 4 && req.status == 200) {
-                if(req.responseText==1)
-                    search();
-                else
-                    alert("数据删除失败，请重试");
-            }
+        function del(delid){
+            const deleid = delid
+            axios.post('http://120.55.69.175:8080/ttms/play/delete',"id=" + deleid).then(console.log('yes')).catch(console.log('no'))
         }
         function init(){
             search();
@@ -318,9 +294,9 @@
         <div class="search">
             <form class="form-inline" name="myForm" action="#" method="post">
                 剧目名称:
-                <input type="text" class="form-control" id="studioname" name="studioname"/>&nbsp;&nbsp;
+                <input type="text" class="form-control" id="playname" name="playname"/>&nbsp;&nbsp;
                 <input type="button" class="btn btn-primary" value="查   询" onclick="search()" />&nbsp;&nbsp;
-                <input type="button" class="btn btn-danger"  value="增   加" onclick="javascript:window.location='detail.html?type=add'" />
+                <input type="button" class="btn btn-danger"  value="增   加" onclick="javascript:window.location='./detail-repertoire.html'" />
             </form>
         </div>
 
