@@ -1,39 +1,34 @@
-package xupt.se.ttms.controller;
+package xupt.se.ttms.controller
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.IOException
+import javax.servlet.ServletException
+import javax.servlet.annotation.WebServlet
+import javax.servlet.http.HttpServlet
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
 
-@WebServlet(name = "StudioServlet", urlPatterns = {"/EmployeeServlet"})
-public class EmployeeServlet extends HttpServlet{
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
+@WebServlet(name = "StudioServlet", urlPatterns = ["/EmployeeServlet"])
+class EmployeeServlet : HttpServlet() {
+    @Throws(ServletException::class, IOException::class)
+    override fun doGet(req: HttpServletRequest, resp: HttpServletResponse) {
+        doPost(req, resp)
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        var type = req.getParameter("type");
-        resp.setHeader("Access-Control-Allow-Origin", "*");
-        if(type.trim().equals("add"))
-            add(req, resp);
-        else if(type.trim().equals("delete")) delete(req, resp);
-        else if(type.trim().equals("update")) update(req, resp);
-        else if(type.trim().equals("search")) search(req, resp);
+    @Throws(ServletException::class, IOException::class)
+    override fun doPost(req: HttpServletRequest, resp: HttpServletResponse) {
+        val type = req.getParameter("type")
+        resp.setHeader("Access-Control-Allow-Origin", "*")
+        if (type.trim { it <= ' ' } == "add") add(req, resp) else if (type.trim { it <= ' ' } == "delete") delete(
+            req,
+            resp
+        ) else if (type.trim { it <= ' ' } == "update") update(
+            req,
+            resp
+        ) else if (type.trim { it <= ' ' } == "search") search(req, resp)
     }
 
-    private void search(HttpServletRequest req, HttpServletResponse resp) {
-    }
-
-    private void update(HttpServletRequest req, HttpServletResponse resp) {
-    }
-
-    private void delete(HttpServletRequest req, HttpServletResponse resp) {
-    }
-
-    private void add(HttpServletRequest req, HttpServletResponse resp) {
-    }
+    private fun search(req: HttpServletRequest, resp: HttpServletResponse) {}
+    private fun update(req: HttpServletRequest, resp: HttpServletResponse) {}
+    private fun delete(req: HttpServletRequest, resp: HttpServletResponse) {}
+    private fun add(req: HttpServletRequest, resp: HttpServletResponse) {}
 }

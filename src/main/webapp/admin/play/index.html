@@ -79,8 +79,8 @@
                     var row = theTable.insertRow(rowCount);//在tale里动态的增加tr
                     row.insertCell(0).innerHTML = dataList[i].id;
                     row.insertCell(1).innerHTML = dataList[i].name;
-                    row.insertCell(2).innerHTML = (dataList[i].dictId == null ? '12': dataList[i].dictId);
-                    row.insertCell(3).innerHTML = dataList[i].dictLangId;
+                    row.insertCell(2).innerHTML = (dataList[i].type == null ? '12': dataList[i].type.name);
+                    row.insertCell(3).innerHTML = (dataList[i].lang == null ? '未知': dataList[i].lang.name);
                     row.insertCell(4).innerHTML = dataList[i].length + '分钟';
                     row.insertCell(5).innerHTML = dataList[i].ticketPrice + '元';
                     row.insertCell(6).innerHTML = dataList[i].introduction;

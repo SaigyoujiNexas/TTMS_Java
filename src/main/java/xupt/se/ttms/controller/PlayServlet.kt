@@ -1,19 +1,27 @@
-@file:OptIn(ExperimentalStdlibApi::class)
+
 
 package xupt.se.ttms.controller
 
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import com.squareup.moshi.adapter
 import org.json.JSONException
 import xupt.se.ttms.entity.Play
+import xupt.se.ttms.entity.PlayLang
+import xupt.se.ttms.entity.PlayType
 import xupt.se.ttms.service.PlaySrv
+import xupt.se.util.JsonUtil
+import xupt.se.util.MOSHI
 import java.io.IOException
+import java.math.BigDecimal
 import javax.servlet.ServletException
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
+@ExperimentalStdlibApi
 class PlayServlet: HttpServlet(){
+
     @Throws(ServletException::class, IOException::class)
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
         println("get Get Request")
@@ -39,15 +47,17 @@ class PlayServlet: HttpServlet(){
     @Throws(ServletException::class, IOException::class)
     private fun add(request: HttpServletRequest, response: HttpServletResponse) {
         try {
+            //in add, you do not need the type name and lang name.
             val play = Play(
-                dictID = request.getParameter("dict_type_id").toInt(),
-                dictLangId = request.getParameter("dict_lang_id").toInt(),
+                type = PlayType(request.getParameter("dict_type_id").toInt(),name = ""),
+                lang = PlayLang(request.getParameter("dict_lang_id").toInt(), name = ""),
                 name = request.getParameter("name"),
                 introduction = request.getParameter("intro"),
                 image = request.getParameter("image"),
                 video = request.getParameter("video"),
                 length = request.getParameter("length").toInt(),
-                ticketPrice = request.getParameter("ticket_price").toBigDecimal()
+                ticketPrice = request.getParameter("ticket_price").toBigDecimal(),
+                status = 0
             )
             response.contentType = "text/html;charset=utf-8"
             val out = response.writer
@@ -74,20 +84,21 @@ class PlayServlet: HttpServlet(){
             response.writer.write("操作错误，请重试")
         }
     }
-
     @Throws(ServletException::class, IOException::class)
     private fun update(request: HttpServletRequest, response: HttpServletResponse) {
         try {
+            //also, in update, not require type name and language name.
             val play = Play(
                 id = request.getParameter("id").toInt(),
-                dictID = request.getParameter("dict_type_id").toInt(),
-                dictLangId = request.getParameter("dict_lang_id").toInt(),
+                type = PlayType(request.getParameter("dict_type_id").toInt(),name = ""),
+                lang = PlayLang(request.getParameter("dict_lang_id").toInt(), name = ""),
                 name = request.getParameter("name"),
                 introduction = request.getParameter("intro"),
                 image = request.getParameter("image"),
                 video = request.getParameter("video"),
                 length = request.getParameter("length").toInt(),
-                ticketPrice = request.getParameter("ticket_price").toBigDecimal()
+                ticketPrice = request.getParameter("ticket_price").toBigDecimal(),
+                status = request.getParameter("status").toShort()
             )
             response.contentType = "text/html;charset=utf-8"
             val out = response.writer
@@ -100,6 +111,7 @@ class PlayServlet: HttpServlet(){
         }
     }
 
+
     @Throws(ServletException::class, IOException::class)
     private fun search(request: HttpServletRequest, response: HttpServletResponse) {
         response.characterEncoding = "UTF-8"
@@ -108,12 +120,15 @@ class PlayServlet: HttpServlet(){
         var arr = ""
         val result: List<Play> =
             if (name != null && name.isNotEmpty())
-                PlaySrv().Fetch(name) else PlaySrv().FetchAll()
+                PlaySrv().Fetch(name)
+            else PlaySrv().FetchAll()
         try {
-            arr = Moshi.Builder().build().adapter<List<Play>>().toJson(result)
+            arr = JsonUtil.toJson(result)
+            println(arr)
         } catch (e: JSONException) {
             e.printStackTrace()
         } finally {
+            println("play geted json : $arr")
             out.println(arr)
             out.flush()
             out.close()

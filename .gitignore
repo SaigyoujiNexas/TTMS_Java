@@ -5,3 +5,4 @@ src/main/resources/jdbc.properties
 META-INF
 build
 target
+src/test
