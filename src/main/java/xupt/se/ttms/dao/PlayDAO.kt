@@ -60,7 +60,7 @@ class PlayDAO : iPlayDAO {
         return result
     }
 
-    fun selectStudioId(id: Int): String? {
+    fun selectPlayId(id: Int): String? {
         val db = DBUtil()
         var result = ""
         try {
@@ -87,7 +87,7 @@ class PlayDAO : iPlayDAO {
         val db = DBUtil()
         val list: MutableList<Play> = LinkedList()
         try {
-            val sql = "SELECT * from studio"
+            val sql = "SELECT * from play"
             if (!db.openConnection()) {
                 print("fail to connect database")
                 return emptyList()
